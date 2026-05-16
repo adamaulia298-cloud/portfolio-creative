@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam | Professional Portfolio</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #0ea5e9, #2563eb);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .work-item {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f8fafc; }
+        ::-webkit-scrollbar-thumb { background: #0ea5e9; border-radius: 10px; }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden selection:bg-sky-100 selection:text-sky-700">
+
+    <nav class="fixed top-0 w-full z-[100] glass-nav border-b border-sky-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#home" class="text-2xl font-extrabold tracking-tighter text-sky-600">ADAM<span class="text-sky-600"> AULIA</span></a>
+            
+            <div class="hidden md:flex space-x-8 text-sm font-bold text-slate-600">
+                <a href="#home" class="hover:text-sky-500 transition-colors">Home</a>
+                <a href="#portfolio" class="hover:text-sky-500 transition-colors">Portfolio</a>
+                <a href="#workflow" class="hover:text-sky-500 transition-colors">Workflow</a>
+                <a href="#contact" class="hover:text-sky-500 transition-colors">Contact</a>
+            </div>
+            
+            <a href="#contact" class="px-6 py-2.5 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold rounded-full transition-all shadow-lg shadow-sky-100 uppercase tracking-widest">Hire Me</a>
+        </div>
+    </nav>
+
+    <section id="home" class="relative min-h-screen flex items-center px-6 pt-20 bg-gradient-to-b from-sky-50 to-white overflow-hidden">
+        <div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-sky-200/30 rounded-full blur-[100px] pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 py-12">
+            <div class="lg:col-span-7" data-aos="fade-right" data-aos-duration="1000">
+                <span class="inline-block text-[10px] font-bold tracking-[0.3em] text-sky-600 uppercase bg-sky-100/50 px-4 py-2 rounded-lg mb-6 border border-sky-100">Design Graphic & Video Editor</span>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1] text-slate-900 mb-6 tracking-tight">
+                    Mengonstruksi <span class="text-gradient">Imajinasi</span> Menjadi Realita Visual.
+                </h1>
+                <p class="text-lg text-slate-500 leading-relaxed mb-8 max-w-xl">
+                    Seorang desainer grafis dan editor video dengan keahlian teknis dalam menciptakan solusi visual sistematis dan penyuntingan video dinamis untuk UMKM.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#portfolio" class="px-8 py-4 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-2xl transition-all shadow-xl shadow-sky-200 flex items-center">Lihat Karya</a>
+                    <a href="#contact" class="px-8 py-4 bg-white border-2 border-sky-100 hover:border-sky-200 text-sky-600 font-bold rounded-2xl transition-all">Hubungi Saya</a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 flex justify-center" data-aos="zoom-in" data-aos-duration="1200">
+                <div class="relative w-80 h-80 md:w-[420px] md:h-[420px] group">
+                    <div class="absolute inset-0 bg-sky-400 rounded-[48px] rotate-6 scale-95 opacity-10 group-hover:rotate-12 transition-all duration-700"></div>
+                    <div class="relative w-full h-full bg-slate-100 rounded-[48px] overflow-hidden border-[6px] border-white shadow-2xl">
+                        <img src="/Foto-adam.jpg" alt="Adam Profile" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-20 md:py-32 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 text-center md:text-left" data-aos="fade-up">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2">Eksplorasi Karya</h2>
+                    <p class="text-sky-600 font-semibold tracking-widest uppercase text-[10px]">6+ Projects Per Category</p>
+                </div>
+                
+                <div class="flex gap-2 mt-8 md:mt-0 bg-sky-50 p-1 rounded-2xl border border-sky-100 overflow-x-auto max-w-full">
+                    <button onclick="filterWorks('all')" id="btn-all" class="filter-btn whitespace-nowrap px-6 py-2.5 text-[10px] md:text-xs font-bold rounded-xl bg-sky-600 text-white transition-all shadow-md">SEMUA</button>
+                    <button onclick="filterWorks('design')" id="btn-design" class="filter-btn whitespace-nowrap px-6 py-2.5 text-[10px] md:text-xs font-bold rounded-xl text-slate-400 hover:text-sky-600 transition-all">DESIGN</button>
+                    <button onclick="filterWorks('video')" id="btn-video" class="filter-btn whitespace-nowrap px-6 py-2.5 text-[10px] md:text-xs font-bold rounded-xl text-slate-400 hover:text-sky-600 transition-all">VIDEO</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" id="portfolio-grid">
+                
+                <div class="work-item video group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
+                    <div class="aspect-video bg-black relative"><iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe></div>
+                    <div class="p-6 md:p-8"><span class="text-[9px] md:text-[10px] font-bold text-sky-500 uppercase tracking-widest">Commercial</span><h3 class="font-bold text-slate-900 text-lg">Product Storytelling 1</h3></div>
+                </div>
+                <div class="work-item video group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
+                    <div class="aspect-video bg-black relative"><iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe></div>
+                    <div class="p-6 md:p-8"><span class="text-[9px] md:text-[10px] font-bold text-sky-500 uppercase tracking-widest">Commercial</span><h3 class="font-bold text-slate-900 text-lg">Product Storytelling 2</h3></div>
+                </div>
+                <div class="work-item video group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
+                    <div class="aspect-video bg-black relative"><iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe></div>
+                    <div class="p-6 md:p-8"><span class="text-[9px] md:text-[10px] font-bold text-sky-500 uppercase tracking-widest">Commercial</span><h3 class="font-bold text-slate-900 text-lg">Product Storytelling 3</h3></div>
+                </div>
+                <div class="work-item video group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
+                    <div class="aspect-video bg-black relative"><iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe></div>
+                    <div class="p-6 md:p-8"><span class="text-[9px] md:text-[10px] font-bold text-sky-500 uppercase tracking-widest">Commercial</span><h3 class="font-bold text-slate-900 text-lg">Product Storytelling 4</h3></div>
+                </div>
+                <div class="work-item video group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
+                    <div class="aspect-video bg-black relative"><iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe></div>
+                    <div class="p-6 md:p-8"><span class="text-[9px] md:text-[10px] font-bold text-sky-500 uppercase tracking-widest">Commercial</span><h3 class="font-bold text-slate-900 text-lg">Product Storytelling 5</h3></div>
+                </div>
+                <div class="work-item video group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
+                    <div class="aspect-video bg-black relative"><iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe></div>
+                    <div class="p-6 md:p-8"><span class="text-[9px] md:text-[10px] font-bold text-sky-500 uppercase tracking-widest">Commercial</span><h3 class="font-bold text-slate-900 text-lg">Product Storytelling 6</h3></div>
+                </div>
+
+                <div class="work-item design group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
+                    <div class="aspect-video overflow-hidden"><img src="https://picsum.photos/seed/d1/800/450" class="w-full h-full object-cover group-hover:scale-110 transition duration-700"></div>
+                    <div class="p-6 md:p-8"><span class="text-[9px] md:text-[10px] font-bold text-blue-500 uppercase tracking-widest">Branding</span><h3 class="font-bold text-slate-900 text-lg">Minimalist Logo Set 1</h3></div>
+                </div>
+                <div class="work-item design group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
+                    <div class="aspect-video overflow-hidden"><img src="https://picsum.photos/seed/d2/800/450" class="w-full h-full object-cover group-hover:scale-110 transition duration-700"></div>
+                    <div class="p-6 md:p-8"><span class="text-[9px] md:text-[10px] font-bold text-blue-500 uppercase tracking-widest">Branding</span><h3 class="font-bold text-slate-900 text-lg">Minimalist Logo Set 2</h3></div>
+                </div>
+                <div class="work-item design group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
+                    <div class="aspect-video overflow-hidden"><img src="https://picsum.photos/seed/d3/800/450" class="w-full h-full object-cover group-hover:scale-110 transition duration-700"></div>
+                    <div class="p-6 md:p-8"><span class="text-[9px] md:text-[10px] font-bold text-blue-500 uppercase tracking-widest">Branding</span><h3 class="font-bold text-slate-900 text-lg">Minimalist Logo Set 3</h3></div>
+                </div>
+                <div class="work-item design group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
+                    <div class="aspect-video overflow-hidden"><img src="https://picsum.photos/seed/d4/800/450" class="w-full h-full object-cover group-hover:scale-110 transition duration-700"></div>
+                    <div class="p-6 md:p-8"><span class="text-[9px] md:text-[10px] font-bold text-blue-500 uppercase tracking-widest">Branding</span><h3 class="font-bold text-slate-900 text-lg">Minimalist Logo Set 4</h3></div>
+                </div>
+                <div class="work-item design group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
+                    <div class="aspect-video overflow-hidden"><img src="https://picsum.photos/seed/d5/800/450" class="w-full h-full object-cover group-hover:scale-110 transition duration-700"></div>
+                    <div class="p-6 md:p-8"><span class="text-[9px] md:text-[10px] font-bold text-blue-500 uppercase tracking-widest">Branding</span><h3 class="font-bold text-slate-900 text-lg">Minimalist Logo Set 5</h3></div>
+                </div>
+                <div class="work-item design group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
+                    <div class="aspect-video overflow-hidden"><img src="https://picsum.photos/seed/d6/800/450" class="w-full h-full object-cover group-hover:scale-110 transition duration-700"></div>
+                    <div class="p-6 md:p-8"><span class="text-[9px] md:text-[10px] font-bold text-blue-500 uppercase tracking-widest">Branding</span><h3 class="font-bold text-slate-900 text-lg">Minimalist Logo Set 6</h3></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="workflow" class="py-32 px-6 bg-sky-50/40 border-t border-sky-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-3xl font-extrabold text-slate-900">Arsitektur Alur Kerja</h2>
+                <p class="text-slate-500 text-sm mt-2 max-w-lg mx-auto">Metodologi terstruktur (structured methodology) untuk memastikan hasil aset kreatif yang efisien dan presisi.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-10 rounded-[32px] shadow-sm border border-sky-50 hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-sky-100 rounded-2xl flex items-center justify-center text-sky-600 font-bold text-xl mb-8">01</div>
+                    <h4 class="font-bold text-xl text-slate-900 mb-4">Discovery</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed italic">(Menganalisis kebutuhan pasar & visual blueprint klien)</p>
+                </div>
+                <div class="bg-white p-10 rounded-[32px] shadow-sm border border-sky-50 hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 font-bold text-xl mb-8">02</div>
+                    <h4 class="font-bold text-xl text-slate-900 mb-4">Assembly</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed italic">(Eksekusi teknis desain vektor & penyuntingan timeline video)</p>
+                </div>
+                <div class="bg-white p-10 rounded-[32px] shadow-sm border border-sky-50 hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 font-bold text-xl mb-8">03</div>
+                    <h4 class="font-bold text-xl text-slate-900 mb-4">Finalization</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed italic">(Color grading, sound design, & rendering resolusi tinggi)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-32 px-6 bg-white relative">
+        <div class="max-w-5xl mx-auto">
+            <div class="bg-gradient-to-br from-sky-600 to-blue-800 rounded-[48px] p-12 md:p-20 text-center text-white relative overflow-hidden shadow-2xl shadow-sky-200" data-aos="zoom-in">
+                <div class="absolute -top-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+                <div class="relative z-10">
+                    <h2 class="text-4xl md:text-6xl font-extrabold mb-8 leading-tight">Mulai Kolaborasi <br>Strategis Hari Ini.</h2>
+                    <p class="text-sky-100 mb-12 max-w-2xl mx-auto text-lg opacity-90">Sampaikan ide Anda, dan mari kita dekonstruksi menjadi karya visual yang berdampak nyata bagi pertumbuhan brand Anda.</p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button onclick="location.href='mailto:adamaulia298@gmail.com'" class="px-12 py-5 bg-white text-sky-700 font-bold rounded-2xl hover:bg-sky-50 transition-all cursor-pointer shadow-lg uppercase tracking-widest text-sm">Send Email</button>
+                        <button onclick="window.open('https://wa.me/6283896253694')" class="px-12 py-5 bg-sky-500/30 border border-white/40 text-white font-bold rounded-2xl hover:bg-sky-500/50 transition-all cursor-pointer uppercase tracking-widest text-sm">WhatsApp</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-sky-50 bg-slate-50/30 text-center">
+        <p class="text-slate-400 text-[10px] font-bold tracking-[0.4em] uppercase">&copy; 2026 ADAM AULIA | ALL RIGHTS RESERVED</p>
+    </footer>
+
+    <script>
+        AOS.init({ once: true, duration: 1000, easing: 'ease-out-cubic' });
+
+        function filterWorks(category) {
+            const items = document.querySelectorAll('.work-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-sky-600', 'text-white', 'shadow-md');
+                btn.classList.add('text-slate-400', 'hover:text-sky-600');
+            });
+            
+            const activeBtn = document.getElementById(`btn-${category}`);
+            activeBtn.classList.add('bg-sky-600', 'text-white', 'shadow-md');
+            activeBtn.classList.remove('text-slate-400');
+
+            items.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'scale(0.95)';
+                
+                setTimeout(() => {
+                    if (category === 'all' || item.classList.contains(category)) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }, 300);
+            });
+            
+            setTimeout(() => AOS.refresh(), 400);
+        }
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) { nav.classList.add('py-4', 'shadow-sm'); } 
+            else { nav.classList.remove('py-4', 'shadow-sm'); }
+        });
+
+        // Pastikan saat load pertama kali memunculkan semua 12 item
+        window.addEventListener('DOMContentLoaded', () => {
+            filterWorks('all');
+        });
+    </script>
+</body>
+</html>
