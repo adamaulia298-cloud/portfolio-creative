@@ -3,349 +3,668 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adam | Professional Portfolio</title>
-    
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
+    <title>Design Archive | Adam Aulia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
+    <!-- Google Fonts yang dioptimalkan -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #ffffff;
-            color: #1e293b;
+        :root {
+            /* === Exact tokens dari index.html === */
+            --sky-600:  #0284c7;
+            --sky-500:  #0ea5e9;
+            --sky-100:  #e0f2fe;
+            --sky-50:   #f0f9ff;
+            --slate-950:#020617;
+            --slate-900:#0f172a;
+            --slate-700:#334155;
+            --slate-500:#64748b;
+            --slate-400:#94a3b8;
+            --slate-100:#f1f5f9;
+            --slate-50: #f8fafc;
+            --white:    #ffffff;
         }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { font-size: 16px; }
+
+        body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--white);
+    color: var(--slate-900);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility; /* Penting untuk estetika desainer */
+}
+
+        /* Noise */
+        body::after {
+            content: "";
+            position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            opacity: 0.03; pointer-events: none; z-index: 9999;
+        }
+
+        /* NAV – sama persis index.html */
         .glass-nav {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255,255,255,0.72);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
         }
-        .text-gradient {
-            background: linear-gradient(to right, #0ea5e9, #2563eb);
-            background-clip: text;
+
+        /* HERO – gradient sama dgn index.html hero section */
+        .hero-section {
+            background: linear-gradient(to bottom, var(--sky-50), var(--white));
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-blob {
+            position: absolute;
+            top: -10%; right: -5%;
+            width: 400px; height: 400px;
+            background: rgba(186,230,253,0.3); /* sky-200/30 */
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 10px; font-weight: 700;
+            letter-spacing: 0.22em; text-transform: uppercase;
+        }
+        .breadcrumb-sep { color: var(--slate-400); }
+        .breadcrumb-dim { color: var(--slate-400); }
+        .breadcrumb-active { color: var(--sky-600); }
+
+        /* HERO LABEL – sama dgn index.html span label */
+        .hero-label {
+            display: inline-block;
+            font-size: 10px; font-weight: 700;
+            letter-spacing: 0.3em; text-transform: uppercase;
+            color: var(--sky-600);
+            background: rgba(224,242,254,0.5); /* sky-100/50 */
+            border: 1px solid var(--sky-100);
+            padding: 8px 16px; border-radius: 8px;
+            margin-bottom: 24px;
+        }
+
+        /* HERO TITLE */
+        .hero-title {
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 800;
+    line-height: 0.92;
+    letter-spacing: -0.04em; /* Sedikit lebih rapat agar terlihat solid */
+    color: var(--slate-950);
+}
+        .hero-title .accent {
+            background: linear-gradient(to right, var(--sky-500), #2563eb);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-        .work-item {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background-clip: text;
         }
 
-        .card-hover {
-                        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
-                    }
-        .card-hover:hover {
+        /* HERO DESC */
+        .hero-desc {
+            font-size: 17px; font-weight: 400; line-height: 1.7;
+            color: var(--slate-500); max-width: 460px;
+            margin-top: 24px;
+        }
+
+        /* STATS */
+        .stat-wrap {
+            display: flex; align-items: center; gap: 32px;
+            margin-top: 40px;
+        }
+        .stat-divider { width: 1px; height: 36px; background: var(--slate-100); }
+        .stat-num {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 32px; font-weight: 800;
+            color: var(--slate-900); line-height: 1;
+        }
+        .stat-label {
+            font-size: 9px; font-weight: 700;
+            letter-spacing: 0.2em; text-transform: uppercase;
+            color: var(--slate-400); margin-top: 4px;
+        }
+
+        /* ============ STICKY FILTER BAR ============ */
+        .filter-bar {
+            position: sticky;
+            top: 80px; /* tepat di bawah nav h-20 */
+            z-index: 30;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--slate-100);
+        }
+        .filter-bar-inner {
+            max-width: 1280px; margin: 0 auto;
+            padding: 14px 24px;
+            display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+        }
+        .filter-label {
+            font-size: 10px; font-weight: 700;
+            letter-spacing: 0.18em; text-transform: uppercase;
+            color: var(--slate-400);
+            margin-right: 6px; white-space: nowrap;
+        }
+
+        /* PILL – sama dgn index.html button style */
+        .pill {
+            height: 36px;
+            padding: 0 18px;
+            border-radius: 999px;
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            border: none; outline: none;
+            white-space: nowrap;
+            display: inline-flex; align-items: center; gap: 7px;
+        }
+        .pill-active {
+            background: var(--sky-600);
+            color: var(--white);
+            box-shadow: 0 8px 24px -4px rgba(2,132,199,0.35);
+        }
+        .pill-inactive {
+            background: var(--slate-100);
+            color: var(--slate-500);
+        }
+        .pill-inactive:hover {
+            background: var(--sky-100);
+            color: var(--sky-600);
+        }
+        .pill-badge {
+            width: 20px; height: 20px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.25);
+            font-size: 9px; font-weight: 800;
+            display: inline-flex; align-items: center; justify-content: center;
+        }
+        .pill-active .pill-badge { background: rgba(255,255,255,0.22); color: #fff; }
+        .pill-inactive .pill-badge { background: var(--sky-600); color: #fff; }
+
+        /* ============ MASONRY ============ */
+        .masonry {
+            columns: 5; column-gap: 18px;
+        }
+        @media (max-width:1280px){ .masonry{ columns:4; } }
+        @media (max-width:1024px){ .masonry{ columns:3; } }
+        @media (max-width:640px) { .masonry{ columns:2; } }
+
+        .m-item {
+            break-inside: avoid;
+            margin-bottom: 18px;
+        }
+        .m-item.hidden { display: none; }
+
+        /* CARD */
+        .card {
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--slate-50);
+            /* sama shadow style dgn index.html card-hover */
+            box-shadow: 0 4px 20px -4px rgba(14,165,233,0.07);
+            transition: transform 0.6s cubic-bezier(0.16,1,0.3,1),
+                        box-shadow 0.6s ease;
+            cursor: pointer;
+        }
+        .card:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(2,132,199,0.18);
         }
 
-        .fade-in-load {
-            animation: fadeIn 1s ease-out;
+        /* IMAGE WRAP */
+        .img-wrap { position: relative; overflow: hidden; width: 100%; }
+        .img-wrap img {
+            width: 100%; height: auto; display: block;
+            transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .card:hover .img-wrap img { transform: scale(1.07); }
+
+        /* OVERLAY */
+        .img-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(15,23,42,0.78) 0%, transparent 55%);
+            opacity: 0;
+            transition: opacity 0.45s ease;
+            display: flex; flex-direction: column;
+            justify-content: flex-end; padding: 16px;
         }
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f8fafc; }
-        ::-webkit-scrollbar-thumb { background: #0ea5e9; border-radius: 10px; }
+        .card:hover .img-overlay { opacity: 1; }
+        .ov-cat {
+            font-size: 9px; font-weight: 800;
+            letter-spacing: 0.2em; text-transform: uppercase;
+            color: var(--sky-500); margin-bottom: 4px;
+        }
+        .ov-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 14px; font-weight: 800;
+            color: var(--white); line-height: 1.2;
+        }
+
+        /* YEAR BADGE */
+        .yr-badge {
+            position: absolute; top: 10px; left: 10px;
+            padding: 3px 10px;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(8px);
+            border-radius: 999px;
+            font-size: 9px; font-weight: 800;
+            letter-spacing: 0.16em; text-transform: uppercase;
+            color: var(--sky-600); z-index: 2;
+        }
+
+        /* CARD FOOTER */
+        .card-foot {
+            padding: 12px 14px 14px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .card-name, .ov-title, .lb-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700; /* Menggunakan weight 700 untuk kontras lebih baik */
+    letter-spacing: -0.01em;
+}
+        .card:hover .card-name { color: var(--sky-600); }
+        .card-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--sky-500); opacity: 0.45;
+        }
+
+        /* ============ LIGHTBOX ============ */
+        .lb {
+            position: fixed; inset: 0;
+            background: #2563eb;
+            backdrop-filter: blur(24px);
+            z-index: 9999 !important;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+        .lb.open { opacity: 1; pointer-events: all; }
+        .lb-img {
+            max-width: 82vw; max-height: 82vh;
+            border-radius: 16px;
+            box-shadow: 0 60px 120px rgba(0,0,0,0.55);
+            transform: scale(0.9);
+            transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+            object-fit: contain;
+        }
+        .lb.open .lb-img { transform: scale(1); }
+        .lb-close {
+            position: absolute; top: 24px; right: 28px;
+            width: 44px; height: 44px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; color: #fff;
+            transition: background 0.2s;
+        }
+        .lb-close:hover { background: rgba(255,255,255,0.18); }
+        .lb-meta {
+            position: absolute; bottom: 28px; left: 50%;
+            transform: translateX(-50%);
+            text-align: center; pointer-events: none;
+        }
+        .lb-cat {
+            font-size: 9px; font-weight: 800;
+            letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--sky-500); margin-bottom: 5px;
+        }
+        .lb-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 18px; font-weight: 800; color: #fff;
+        }
+
+        .nav-prev, .nav-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10000 !important; /* Paksa di atas segalanya */
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            font-size: 24px;
+        }
+            .nav-prev { left: 40px; }
+            .nav-next { right: 40px; }
+
+        /* Scrollbar */
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--slate-50); }
+        ::-webkit-scrollbar-thumb { background: var(--sky-600); border-radius: 10px; }
     </style>
 </head>
-<body class="antialiased overflow-x-hidden selection:bg-sky-100 selection:text-sky-700">
+<body>
 
-    <nav class="fixed top-0 w-full z-[100] glass-nav border-b border-sky-50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#home" class="text-2xl font-extrabold tracking-tighter text-sky-600">ADAM<span class="text-sky-600"> AULIA</span></a>
-            
-            <div class="hidden md:flex space-x-8 text-sm font-bold text-slate-600">
-                <a href="#home" class="hover:text-sky-500 transition-colors">Home</a>
-                <a href="#portfolio" class="hover:text-sky-500 transition-colors">Portfolio</a>
-                <a href="#workflow" class="hover:text-sky-500 transition-colors">Workflow</a>
-                <a href="#contact" class="hover:text-sky-500 transition-colors">Contact</a>
-            </div>
-            
-            <a href="#contact" class="px-6 py-2.5 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold rounded-full transition-all shadow-lg shadow-sky-100 uppercase tracking-widest">Hire Me</a>
+<!-- ===== NAV ===== -->
+<nav class="glass-nav fixed top-0 w-full z-50 border-b border-sky-50 transition-all duration-300">
+    <div style="max-width:1280px;margin:0 auto;padding:0 24px;height:80px;display:flex;align-items:center;justify-content:space-between;">
+        <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;" class="group">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            <span style="font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#64748b;">Kembali</span>
+        </a>
+        <a href="index.html" style="font-family:'Plus Jakarta Sans', sans-serif;font-size:20px;font-weight:800;color:#0284c7;text-decoration:none;letter-spacing:-0.02em;">
+            ADAM <span style="color:#0284c7;">AULIA</span>
+        </a>
+    </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero-section" style="padding: 140px 24px 80px;">
+    <div class="hero-blob"></div>
+    <div style="max-width:1280px;margin:0 auto;position:relative;z-index:2;">
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb" style="margin-bottom:28px;" data-aos="fade-right" data-aos-duration="700">
+            <span class="breadcrumb-dim">Portfolio</span>
+            <span class="breadcrumb-sep"></span>
+            <span class="breadcrumb-active">Design Archive</span>
         </div>
-    </nav>
 
-    <section id="home" class="relative min-h-screen flex items-center px-6 pt-20 bg-gradient-to-b from-sky-50 to-white overflow-hidden">
-        <div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-sky-200/30 rounded-full blur-[100px] pointer-events-none"></div>
-        
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 py-12">
-            <div class="lg:col-span-7" data-aos="fade-right" data-aos-duration="1000">
-                <span class="inline-block text-[10px] font-bold tracking-[0.3em] text-sky-600 uppercase bg-sky-100/50 px-4 py-2 rounded-lg mb-6 border border-sky-100">Design Graphic & Video Editor</span>
-                <h1 class="text-5xl md:text-8xl font-black leading-[0.95] text-slate-950 mb-8 tracking-tighter">
-                    Mengonstruksi <span class="text-gradient">Imajinasi</span> Menjadi Realita Visual.
+        <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px;">
+            <!-- Left -->
+            <div data-aos="fade-up" data-aos-duration="900">
+                <span class="hero-label">Graphic Design &amp; Visual Assets</span>
+                <h1 class="hero-title">
+                    DESIGN<br><span class="accent">ARCHIVE</span>
                 </h1>
-                <p class="text-lg text-slate-500 leading-relaxed mb-8 max-w-xl">
-                    Seorang desainer grafis dan editor video dengan keahlian teknis dalam menciptakan solusi visual sistematis dan penyuntingan video dinamis untuk UMKM.
+                <p class="hero-desc">
+                    Koleksi personal, job, dan client. Project berisikan aset grafis, branding, dan desain visual sistematis untuk UMKM dan brand kreatif.
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#portfolio" class="px-8 py-4 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-2xl transition-all shadow-xl shadow-sky-200 flex items-center">Lihat Karya</a>
-                    <a href="#contact" class="px-8 py-4 bg-white border-2 border-sky-100 hover:border-sky-200 text-sky-600 font-bold rounded-2xl transition-all">Hubungi Saya</a>
-                </div>
             </div>
 
-            <div class="lg:col-span-5 flex justify-center" data-aos="zoom-in" data-aos-duration="1200">
-                <div class="relative w-80 h-80 md:w-[420px] md:h-[420px] group">
-                    <div class="absolute inset-0 bg-sky-400 rounded-[48px] rotate-6 scale-95 opacity-10 group-hover:rotate-12 transition-all duration-700"></div>
-                    <div class="relative w-full h-full bg-slate-100 rounded-[48px] overflow-hidden border-[6px] border-white shadow-2xl">
-                        <img src="Foto-adam.jpg" alt="Adam Profile" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio" class="py-20 md:py-32 px-6 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 text-center md:text-left" data-aos="fade-up">
+            <!-- Stats -->
+            <div class="stat-wrap" data-aos="fade-left" data-aos-duration="900" data-aos-delay="150">
                 <div>
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2">Eksplorasi Karya</h2>
-                    <p class="text-sky-600 font-semibold tracking-widest uppercase text-[10px]">6+ Projects Per Category</p>
+                    <div class="stat-num" id="hero-count">10</div>
+                    <div class="stat-label">Projects</div>
                 </div>
-                
-                <div class="flex gap-2 mt-8 md:mt-0 bg-sky-50 p-1 rounded-2xl border border-sky-100 overflow-x-auto max-w-full">
-                    <button onclick="filterWorks('all')" id="btn-all" class="filter-btn whitespace-nowrap px-6 py-2.5 text-[10px] md:text-xs font-bold rounded-xl bg-sky-600 text-white transition-all shadow-md">SEMUA</button>
-                    <button onclick="filterWorks('design')" id="btn-design" class="filter-btn whitespace-nowrap px-6 py-2.5 text-[10px] md:text-xs font-bold rounded-xl text-slate-400 hover:text-sky-600 transition-all">DESIGN</button>
-                    <button onclick="filterWorks('video')" id="btn-video" class="filter-btn whitespace-nowrap px-6 py-2.5 text-[10px] md:text-xs font-bold rounded-xl text-slate-400 hover:text-sky-600 transition-all">VIDEO</button>
+                <div class="stat-divider"></div>
+                <div>
+                    <div class="stat-num">3</div>
+                    <div class="stat-label">Kategori</div>
                 </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12" id="portfolio-grid">
-                
-                <div class="work-item video group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
-                    <div class="aspect-video bg-black relative">
-                        <video class="w-full h-full object-cover" controls preload="metadata">
-                            <source src="https://res.cloudinary.com/dyt5pabzw/video/upload/v1779361984/Animasi_pentingnya_Gizi_untuk_anak_anak_bcebau.mp4" type="video/mp4">
-                            Browser Anda tidak mendukung tag video.
-                        </video>
-                    </div>
-                    <div class="p-6 md:p-8"><span class="text-[9px] md:text-[10px] font-bold text-sky-500 uppercase tracking-widest">Video</span><h3 class="font-bold text-slate-900 text-lg">Project Freelance | Educational Content</h3></div>
-                </div>
-                <div class="work-item video group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
-                    <div class="aspect-video bg-black relative">
-                        <video class="w-full h-full object-cover" controls preload="metadata">
-                            <source src="https://res.cloudinary.com/dyt5pabzw/video/upload/v1779361994/Vaksin_Benteng_Imun_kita_bersama_c6fz1r.mp4" type="video/mp4">
-                            Browser Anda tidak mendukung tag video.
-                        </video>
-                    </div>
-                    <div class="p-6 md:p-8"><span class="text-[9px] md:text-[10px] font-bold text-sky-500 uppercase tracking-widest">Video</span><h3 class="font-bold text-slate-900 text-lg">Project Freelance | Educational Content</h3></div>
-                </div>
-                <div class="work-item video group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
-                    <div class="aspect-video bg-black relative">
-                        <video class="w-full h-full object-cover" controls preload="metadata">
-                            <source src="https://res.cloudinary.com/dyt5pabzw/video/upload/v1779362011/PENTING_NYA_EDUKASI_REPRODUKSI_UNTUK_REMAJA_fkiede.mp4" type="video/mp4">
-                            Browser Anda tidak mendukung tag video.
-                        </video>
-                    </div>
-                    <div class="p-6 md:p-8"><span class="text-[9px] md:text-[10px] font-bold text-sky-500 uppercase tracking-widest">Video</span><h3 class="font-bold text-slate-900 text-lg">Project Freelance | Educational Content</h3></div>
-                </div>
-
-                <div class="work-item video group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
-    <div class="aspect-[9/16] max-h-[550px] bg-black relative mx-auto overflow-hidden">
-        <video class="w-full h-full object-contain" controls muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dyt5pabzw/video/upload/v1779361942/snaptik_7528692757469318407_v2_mgs0av.mp4" type="video/mp4">
-            Browser Anda tidak mendukung tag video.
-        </video>
-    </div>
-    <div class="p-6 md:p-8">
-        <span class="text-[9px] md:text-[10px] font-bold text-sky-500 uppercase tracking-widest">Video</span>
-        <h3 class="font-bold text-slate-900 text-lg">Putra Jaya Mandiri | Job Project</h3>
-    </div>
-</div>
-
-<div class="work-item video group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
-    <div class="aspect-[9/16] max-h-[550px] bg-black relative mx-auto overflow-hidden">
-        <video class="w-full h-full object-contain" controls muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dyt5pabzw/video/upload/v1779362003/PORTFOLIO_SAYA_wpzfx2.mp4" type="video/mp4">
-            Browser Anda tidak mendukung tag video.
-        </video>
-    </div>
-    <div class="p-6 md:p-8">
-        <span class="text-[9px] md:text-[10px] font-bold text-sky-500 uppercase tracking-widest">Video</span>
-        <h3 class="font-bold text-slate-900 text-lg">Putra Jaya Mandiri | Job Project</h3>
-    </div>
-</div>
-
-<div class="work-item video group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
-    <div class="aspect-[9/16] max-h-[550px] bg-black relative mx-auto overflow-hidden">
-        <video class="w-full h-full object-contain" controls muted playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dyt5pabzw/video/upload/v1779361921/snaptik_7529083384434298118_v2_rlpuis.mp4" type="video/mp4">
-            Browser Anda tidak mendukung tag video.
-        </video>
-    </div>
-    <div class="p-6 md:p-8">
-        <span class="text-[9px] md:text-[10px] font-bold text-sky-500 uppercase tracking-widest">Video</span>
-        <h3 class="font-bold text-slate-900 text-lg">Putra Jaya Mandiri | Job Project</h3>
-    </div>
-</div>
-
-                <div class="work-item design group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
-    <div class="aspect-square overflow-hidden bg-slate-100">
-        <img src="Logo (1).jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-    </div>
-    <div class="p-6 md:p-8">
-        <span class="text-[9px] md:text-[10px] font-bold text-blue-500 uppercase tracking-widest">Logo</span>
-        <h3 class="font-bold text-slate-900 text-lg">Adhantara | Personal Project</h3>
-    </div>
-</div>
-
-<div class="work-item design group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
-    <div class="aspect-square overflow-hidden bg-slate-100">
-        <img src="Logo (4).jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-    </div>
-    <div class="p-6 md:p-8">
-        <span class="text-[9px] md:text-[10px] font-bold text-blue-500 uppercase tracking-widest">Logo</span>
-        <h3 class="font-bold text-slate-900 text-lg">Keratifin Indonesia | Personal Project</h3>
-    </div>
-</div>
-
-<div class="work-item design group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
-    <div class="aspect-square overflow-hidden bg-slate-100">
-        <img src="Logo (6).jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-    </div>
-    <div class="p-6 md:p-8">
-        <span class="text-[9px] md:text-[10px] font-bold text-blue-500 uppercase tracking-widest">Logo</span>
-        <h3 class="font-bold text-slate-900 text-lg">Ivan Gunawan Group | Personal Project</h3>
-    </div>
-</div>
-
-
-<div class="work-item design group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
-    <div class="aspect-[4/5] overflow-hidden bg-slate-100">
-        <img src="4.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-    </div>
-    <div class="p-6 md:p-8">
-        <span class="text-[9px] md:text-[10px] font-bold text-blue-500 uppercase tracking-widest">Social Media</span>
-        <h3 class="font-bold text-slate-900 text-lg">Social Media | Client Job</h3>
-    </div>
-</div>
-
-<div class="work-item design group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
-    <div class="aspect-[4/5] overflow-hidden bg-slate-100">
-        <img src="5.png" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-    </div>
-    <div class="p-6 md:p-8">
-        <span class="text-[9px] md:text-[10px] font-bold text-blue-500 uppercase tracking-widest">Social Media</span>
-        <h3 class="font-bold text-slate-900 text-lg">Social Media | Personal Project</h3>
-    </div>
-</div>
-
-<div class="work-item design group bg-slate-50 rounded-[24px] md:rounded-[32px] overflow-hidden border border-sky-50 hover:shadow-2xl transition-all duration-500" data-aos="fade-up">
-    <div class="aspect-[4/5] overflow-hidden bg-slate-100">
-        <img src="6.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-    </div>
-    <div class="p-6 md:p-8">
-        <span class="text-[9px] md:text-[10px] font-bold text-blue-500 uppercase tracking-widest">Social Media</span>
-        <h3 class="font-bold text-slate-900 text-lg">Social Media | Client Job</h3>
-    </div>
-</div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="workflow" class="py-32 px-6 bg-sky-50/40 border-t border-sky-100">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20" data-aos="fade-up">
-                <h2 class="text-3xl font-extrabold text-slate-900">Arsitektur Alur Kerja</h2>
-                <p class="text-slate-500 text-sm mt-2 max-w-lg mx-auto">Metodologi terstruktur (structured methodology) untuk memastikan hasil aset kreatif yang efisien dan presisi.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-10 rounded-[32px] shadow-sm border border-sky-50 hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-14 h-14 bg-sky-100 rounded-2xl flex items-center justify-center text-sky-600 font-bold text-xl mb-8">01</div>
-                    <h4 class="font-bold text-xl text-slate-900 mb-4">Discovery</h4>
-                    <p class="text-slate-500 text-sm leading-relaxed italic">(Menganalisis kebutuhan pasar & visual blueprint klien)</p>
-                </div>
-                <div class="bg-white p-10 rounded-[32px] shadow-sm border border-sky-50 hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 font-bold text-xl mb-8">02</div>
-                    <h4 class="font-bold text-xl text-slate-900 mb-4">Assembly</h4>
-                    <p class="text-slate-500 text-sm leading-relaxed italic">(Eksekusi teknis desain vektor & penyuntingan timeline video)</p>
-                </div>
-                <div class="bg-white p-10 rounded-[32px] shadow-sm border border-sky-50 hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-14 h-14 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 font-bold text-xl mb-8">03</div>
-                    <h4 class="font-bold text-xl text-slate-900 mb-4">Finalization</h4>
-                    <p class="text-slate-500 text-sm leading-relaxed italic">(Color grading, sound design, & rendering resolusi tinggi)</p>
+                <div class="stat-divider"></div>
+                <div>
+                    <div class="stat-num">2026</div>
+                    <div class="stat-label">Year</div>
                 </div>
             </div>
         </div>
-    </section>
+        
+    </div>
+</div>
 
-    <section id="contact" class="py-32 px-6 bg-white relative">
-        <div class="max-w-5xl mx-auto">
-            <div class="bg-gradient-to-br from-sky-600 to-blue-800 rounded-[48px] p-12 md:p-20 text-center text-white relative overflow-hidden shadow-2xl shadow-sky-200" data-aos="zoom-in">
-                <div class="absolute -top-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
-                <div class="relative z-10">
-                    <h2 class="text-4xl md:text-6xl font-extrabold mb-8 leading-tight">Mulai Kolaborasi <br>Strategis Hari Ini.</h2>
-                    <p class="text-sky-100 mb-12 max-w-2xl mx-auto text-lg opacity-90">Sampaikan ide Anda, dan mari kita dekonstruksi menjadi karya visual yang berdampak nyata bagi pertumbuhan brand Anda.</p>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button onclick="location.href='mailto:adamaulia298@gmail.com'" class="px-12 py-5 bg-white text-sky-700 font-bold rounded-2xl hover:bg-sky-50 transition-all cursor-pointer shadow-lg uppercase tracking-widest text-sm">Send Email</button>
-                        <button onclick="window.open('https://wa.me/6283896253694')" class="px-12 py-5 bg-sky-500/30 border border-white/40 text-white font-bold rounded-2xl hover:bg-sky-500/50 transition-all cursor-pointer uppercase tracking-widest text-sm">WhatsApp</button>
+    </div>
+</section>
+
+<!-- ===== FILTER BAR ===== -->
+<div class="filter-bar">
+    <div class="filter-bar-inner">
+        <span class="filter-label">Filter :</span>
+        <button class="pill pill-active" onclick="filter('all',this)">
+            Semua <span class="pill-badge" id="cnt-all">10</span>
+        </button>
+        <button class="pill pill-inactive" onclick="filter('brand-identity',this)">Brand Identity</button>
+        <button class="pill pill-inactive" onclick="filter('logo',this)">Logo</button>
+        
+        <button class="pill pill-inactive" onclick="filter('poster',this)">Poster</button>
+    </div>
+</div>
+
+<!-- ===== MASONRY GRID ===== -->
+<main id="main-content" style="max-width:1280px; margin:0 auto; padding:48px 24px 80px;">
+
+    <!-- Brand Identity Section -->
+    <div id="section-brand-identity" class="category-section">
+        <h2 style="font-size: 24px; font-weight: 800; margin-bottom: 24px; color: var(--slate-900);">Brand Identity</h2>
+        <div class="masonry">
+            <!-- Item Brand Identity -->
+            <div class="m-item" data-cat="brand-identity" data-aos="fade-up">
+                <div class="card" onclick="lb([
+                 'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471316/Artboard_6_ov9fvf.png',
+                 'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471318/Artboard_1_pxcqso.jpg',
+                 'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471320/Artboard_2_zoisc2.png', 
+                 'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471321/Artboard_4_ahxemx.png',
+                 'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471320/Artboard_3_iiy9iv.png', 
+                 'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471321/Artboard_5_ga1t1d.png'], 'ARCHITECTURAL_01', 'Branding')">
+                    <div class="img-wrap" style="aspect-ratio:16/9;">
+                        <img src="https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471316/Artboard_6_ov9fvf.png" loading="lazy" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="m-item" data-cat="brand-identity" data-aos="fade-up">
+                <div class="card" onclick="lb([
+                 'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471361/Artboard_1_kyrga1.jpg',
+                 'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471361/Artboard_2_fdos0k.jpg', 
+                 'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471361/Artboard_4_zc5unh.jpg', 
+                 'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471342/Artboard_4_nhh0yc.png'],
+                'ARCHITECTURAL_01','Branding')">
+                    <div class="img-wrap" style="aspect-ratio:16/9;">
+                        <img src="https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471361/Artboard_1_kyrga1.jpg" loading="lazy" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="m-item" data-cat="brand-identity" data-aos="fade-up">
+                <div class="card" onclick="lb([
+                'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471342/Artboard_1_nhkn9s.png',
+                'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471340/Artboard_3_quuizt.jpg',
+                'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471341/Artboard_2_szqd3h.png',
+                'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471342/Artboard_4_nhh0yc.png'], 'ARCHITECTURAL_01', 'Branding')">
+                    <div class="img-wrap" style="aspect-ratio:16/9;">
+                        <img src="https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471342/Artboard_1_nhkn9s.png" loading="lazy" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="m-item" data-cat="brand-identity" data-aos="fade-up">
+                <div class="card" onclick="lb([
+                    'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471377/Artboard_5_vfpwlo.png',
+                    'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471376/Artboard_1_fegw3x.jpg',
+                    'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471377/Artboard_4_nzmcn1.png',
+                    'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471380/Artboard_3_kqraks.png'],'ARCHITECTURAL_01','Branding')">
+                    <div class="img-wrap" style="aspect-ratio:16/9;">
+                        <img src="https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471377/Artboard_5_vfpwlo.png" loading="lazy" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- Tambahkan item lainnya di sini -->
+        </div>
+    </div>
+    <!-- Brand Identity Section -->
+
+    <!-- Logo Section -->
+    <div id="section-logo" class="category-section" style="margin-top: 48px;">
+        <h2 style="font-size: 24px; font-weight: 800; margin-bottom: 24px; color: var(--slate-900);">Logo</h2>
+        <div class="masonry">
+            <!-- Item Logo -->
+            <div class="m-item" data-cat="logo" data-aos="fade-up">
+                <div class="card" onclick="lb([
+                    'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780473382/Artboard_10-100_rfctms.jpg',],'LOGO_01','Logo')">
+                    <div class="img-wrap" style="aspect-ratio:1/1;">
+                        <img src="https://res.cloudinary.com/dyt5pabzw/image/upload/v1780473382/Artboard_10-100_rfctms.jpg" loading="lazy" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="m-item" data-cat="logo" data-aos="fade-up">
+                <div class="card" onclick="lb([
+                    'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471441/Logo_4_sqyta9.jpg'], 'LOGO_01', 'Logo')">
+                    <div class="img-wrap" style="aspect-ratio:1/1;">
+                        <img src="https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471441/Logo_4_sqyta9.jpg" loading="lazy" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="m-item" data-cat="logo" data-aos="fade-up">
+                <div class="card" onclick="lb([
+                    'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471361/Artboard_1_kyrga1.jpg'], 'LOGO_01', 'Logo')">
+                    <div class="img-wrap" style="aspect-ratio:1/1;">
+                        <img src="https://res.cloudinary.com/dyt5pabzw/image/upload/v1780471441/Logo_1_px8sfd.jpg" loading="lazy" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="m-item" data-cat="logo" data-aos="fade-up">
+                <div class="card" onclick="lb([
+                    'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780473382/Artboard_14-100_qpxdup.jpg'], 'LOGO_01', 'Logo')">
+                    <div class="img-wrap" style="aspect-ratio:1/1;">
+                        <img src="https://res.cloudinary.com/dyt5pabzw/image/upload/v1780473382/Artboard_14-100_qpxdup.jpg" loading="lazy" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="m-item" data-cat="logo" data-aos="fade-up">
+                <div class="card" onclick="lb([
+                    'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780473381/Artboard_7-100_ajmgtx.jpg'], 'LOGO_01', 'Logo')">
+                    <div class="img-wrap" style="aspect-ratio:1/1;">
+                        <img src="https://res.cloudinary.com/dyt5pabzw/image/upload/v1780473381/Artboard_7-100_ajmgtx.jpg" loading="lazy" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="m-item" data-cat="logo" data-aos="fade-up">
+                <div class="card" onclick="lb([
+                    'https://res.cloudinary.com/dyt5pabzw/image/upload/v1780473381/Artboard_8-100_o0ns0d.jpg'], 'LOGO_01', 'Logo')">
+                    <div class="img-wrap" style="aspect-ratio:1/1;">
+                        <img src="https://res.cloudinary.com/dyt5pabzw/image/upload/v1780473381/Artboard_8-100_o0ns0d.jpg" loading="lazy" alt="">
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <footer class="py-12 border-t border-sky-50 bg-slate-50/30 text-center">
-        <p class="text-slate-400 text-[10px] font-bold tracking-[0.4em] uppercase">&copy; 2026 ADAM AULIA | ALL RIGHTS RESERVED</p>
-    </footer>
-
-    <script>
-        AOS.init({ once: true, duration: 1000, easing: 'ease-out-cubic' });
-
-        function filterWorks(category) {
-            const items = document.querySelectorAll('.work-item');
-            const buttons = document.querySelectorAll('.filter-btn');
-
-            buttons.forEach(btn => {
-                btn.classList.remove('bg-sky-600', 'text-white', 'shadow-md');
-                btn.classList.add('text-slate-400', 'hover:text-sky-600');
-            });
+    </div>
+    
+    
+    
+    <!-- Logo Section -->
+    
+    <!-- Poster Section -->
+    <div id="section-poster" class="category-section" style="margin-top: 48px;">
+        <h2 style="font-size: 24px; font-weight: 800; margin-bottom: 24px; color: var(--slate-900);">Poster</h2>
+        <div class="masonry">
+            <!-- Item Poster -->
+            <div class="m-item" data-cat="poster" data-aos="fade-up">
+                <div class="card" onclick="lb(
+                    ['https://res.cloudinary.com/dyt5pabzw/image/upload/v1780484239/Artboard_2_kacc4e.jpg'], 'POSTER_01', 'Poster')">
+                    <div class="img-wrap" style="aspect-ratio:4/5;">
+                        <img src="https://res.cloudinary.com/dyt5pabzw/image/upload/v1780484239/Artboard_2_kacc4e.jpg" loading="lazy" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="m-item" data-cat="poster" data-aos="fade-up">
+                <div class="card" onclick="lb(['https://res.cloudinary.com/dyt5pabzw/image/upload/v1780484239/Artboard_5_lijzpw.jpg'],'POSTER_01','Poster')">
+                    <div class="img-wrap" style="aspect-ratio:4/5;">
+                        <img src="https://res.cloudinary.com/dyt5pabzw/image/upload/v1780484239/Artboard_5_lijzpw.jpg" loading="lazy" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="m-item" data-cat="poster" data-aos="fade-up">
+                <div class="card" onclick="lb(['https://res.cloudinary.com/dyt5pabzw/image/upload/v1780484239/Artboard_6_qm3b4i.jpg'],'POSTER_01','Poster')">
+                    <div class="img-wrap" style="aspect-ratio:4/5;">
+                        <img src="https://res.cloudinary.com/dyt5pabzw/image/upload/v1780484239/Artboard_6_qm3b4i.jpg" loading="lazy" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="m-item" data-cat="poster" data-aos="fade-up">
+                <div class="card" onclick="lb(['https://res.cloudinary.com/dyt5pabzw/image/upload/v1780484238/Artboard_3_yeievo.jpg'],'POSTER_01','Poster')">
+                    <div class="img-wrap" style="aspect-ratio:4/5;">
+                        <img src="https://res.cloudinary.com/dyt5pabzw/image/upload/v1780484238/Artboard_3_yeievo.jpg" loading="lazy" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="m-item" data-cat="poster" data-aos="fade-up">
+                <div class="card" onclick="lb(['https://res.cloudinary.com/dyt5pabzw/image/upload/v1780484238/Artboard_4_n5b5hq.jpg'],'POSTER_01','Poster')">
+                    <div class="img-wrap" style="aspect-ratio:4/5;">
+                        <img src="https://res.cloudinary.com/dyt5pabzw/image/upload/v1780484238/Artboard_4_n5b5hq.jpg" loading="lazy" alt="">
+                    </div>
+                </div>
+            </div>
             
-            const activeBtn = document.getElementById(`btn-${category}`);
-            activeBtn.classList.add('bg-sky-600', 'text-white', 'shadow-md');
-            activeBtn.classList.remove('text-slate-400');
-
-            items.forEach(item => {
-                item.style.opacity = '0';
-                item.style.transform = 'scale(0.95)';
-                
-                setTimeout(() => {
-                    if (category === 'all' || item.classList.contains(category)) {
-                        item.style.display = 'block';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'scale(1)';
-                        }, 50);
-                    } else {
-                        item.style.display = 'none';
-                    }
-                }, 300);
-            });
             
-            setTimeout(() => AOS.refresh(), 400);
+        </div>
+    </div>
+    <!-- Poster Section -->
+    
+</main>
+
+<!-- FOOTER -->
+<footer style="border-top:1px solid #f1f5f9;padding:40px 24px;text-align:center;background:#f8fafc;">
+    <p style="font-size:10px;font-weight:700;letter-spacing:0.4em;text-transform:uppercase;color:#94a3b8;">
+        © 2026 ADAM AULIA — DESIGN ARCHIVE
+    </p>
+</footer>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lb" id="lb" onclick="lbClose(event)">
+    <button class="lb-close" onclick="lbClose()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <button class="nav-prev" onclick="changeSlide(-1); event.stopPropagation();">&#10094;</button>
+    
+    <img src="" alt="" class="lb-img" id="lb-img">
+    
+    <button class="nav-next" onclick="changeSlide(1); event.stopPropagation();">&#10095;</button>
+    <img src="" alt="" class="lb-img" id="lb-img">
+    <div class="lb-meta">
+        <div class="lb-cat" id="lb-cat"></div>
+        <div class="lb-title" id="lb-title"></div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 720, easing: 'cubic-bezier(0.16,1,0.3,1)', once: true });
+
+    function filter(cat, btn) {
+        // Update UI tombol
+        document.querySelectorAll('.pill').forEach(p => p.classList.replace('pill-active','pill-inactive'));
+        btn.classList.replace('pill-inactive','pill-active');
+
+        const sections = document.querySelectorAll('.category-section');
+        
+        sections.forEach(sec => {
+            if (cat === 'all') {
+                sec.style.display = 'block'; // Tampilkan semua kategori dengan judulnya
+            } else {
+                // Tampilkan hanya kategori yang dipilih
+                sec.style.display = (sec.id === 'section-' + cat) ? 'block' : 'none';
+            }
+        });
+    }
+
+    let currentSlide = 0;
+    let currentImages = [];
+
+    function lb(images, title, cat) {
+        currentImages = images; // Array gambar ['/img1.jpg', '/img2.jpg', ...]
+        currentSlide = 0;
+        
+        document.getElementById('lb-img').src = currentImages[currentSlide];
+        document.getElementById('lb-title').textContent = title;
+        document.getElementById('lb-cat').textContent = cat;
+        document.getElementById('lb').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function changeSlide(direction) {
+        currentSlide = (currentSlide + direction + currentImages.length) % currentImages.length;
+        document.getElementById('lb-img').src = currentImages[currentSlide];
+    }
+    function lbClose(e) {
+        if (!e || e.target === document.getElementById('lb') || e.target.closest('.lb-close')) {
+            document.getElementById('lb').classList.remove('open');
+            document.body.style.overflow = '';
         }
-
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) { nav.classList.add('py-4', 'shadow-sm'); } 
-            else { nav.classList.remove('py-4', 'shadow-sm'); }
-        });
-
-        // Pastikan saat load pertama kali memunculkan semua 12 item
-        window.addEventListener('DOMContentLoaded', () => {
-            filterWorks('all');
-        });
-    </script>
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') lbClose(); });
+</script>
 </body>
 </html>
