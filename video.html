@@ -1830,43 +1830,77 @@
 
     const modalVideo = document.querySelector('.modal-video');
 
-const youtubeMatch = videoUrl.match(
-    /(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([^&?/]+)/
-);
+    const youtubeMatch = videoUrl.match(
+        /(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([^&?/]+)/
+    );
 
-const tiktokMatch = videoUrl.match(
-    /tiktok\.com\/@[^/]+\/video\/(\d+)/
-);
+    const tiktokMatch = videoUrl.match(
+        /tiktok\.com\/@[^/]+\/video\/(\d+)/
+    );
 
-modalVideo.classList.toggle('is-vertical', !!tiktokMatch);
+    const isCloudinary = 
+        videoUrl.includes('res.cloudinary.com') &&
+        videoUrl.includes('/video/upload/');
 
-if (youtubeMatch) {
-    const videoId = youtubeMatch[1];
+    modalVideo.classList.toggle(
+        'is-vertical',
+        !!tiktokMatch
+    );
 
-    modalVideo.innerHTML = `
-        <iframe
-            src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0"
-            title="${title}"
-            allow="autoplay; encrypted-media; picture-in-picture"
-            allowfullscreen>
-        </iframe>
-    `;
-} else if (tiktokMatch) {
-    const videoId = tiktokMatch[1];
+    if (youtubeMatch) {
+        const videoId = youtubeMatch[1];
 
-    modalVideo.innerHTML = `
-        <iframe
-            src="https://www.tiktok.com/player/v1/${videoId}?music_info=1&description=1&controls=1&volume_control=1&autoplay=0&force_muted=0"
-            title="${title}"
-            allow="fullscreen; autoplay; encrypted-media"
-            allowfullscreen>
-        </iframe>
-    `;
-} else {
-    modalVideo.innerHTML = `
-        <p>Link video tidak dikenali.</p>
-    `;
-}
+        modalVideo.innerHTML = `
+            <iframe
+                src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0"
+                title="${title}"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        `;
+
+    } else if (tiktokMatch) {
+        const videoId = tiktokMatch[1];
+
+        modalVideo.innerHTML = `
+            <iframe
+                src="https://www.tiktok.com/player/v1/${videoId}?music_info=1&description=1&controls=1&volume_control=1&autoplay=0&force_muted=0"
+                title="${title}"
+                allow="fullscreen; autoplay; encrypted-media"
+                allowfullscreen>
+            </iframe>
+        `;
+
+    } else if (isCloudinary) {
+        modalVideo.classList.remove('is-vertical');
+
+        let playableUrl = videoUrl;
+
+        const isMov = /\.mov(?:\?|$)/i.test(playableUrl);
+
+        if (isMov) {
+            playableUrl = playableUrl.replace(
+                '/video/upload/',
+                '/video/upload/f_mp4/'
+            ).replace(/\.mov(?=\?|$)/i, '.mp4');
+        }
+
+        modalVideo.innerHTML = `
+            <video controls autoplay playsinline preload="metadata">
+                <source src="${playableUrl}" type="video/mp4">
+                Browser tidak mendukung pemutaran video.
+            </video>
+        `;
+
+    } else {
+        modalVideo.innerHTML = `
+            <div class="modal-placeholder">
+                <p style="color:white;padding:20px;text-align:center;">
+                    Link video tidak dikenali.
+                </p>
+            </div>
+        `;
+    }
 
     document.getElementById('modal-bg').classList.add('open');
     document.body.style.overflow = 'hidden';
