@@ -459,7 +459,8 @@
         <button class="pill pill-active" onclick="filterV('all',this)">Semua <span class="pill-badge" id="cnt-all">6</span></button>
         <button class="pill pill-inactive" onclick="filterV('educational',this)">Motion Graphics</button>
         <button class="pill pill-inactive" onclick="filterV('commercial',this)">Commercial</button>
-        <button class="pill pill-inactive" onclick="filterV('social',this)">Social Media</button>
+        <button class="pill pill-inactive" onclick="filterV('shortform',this)">Short Form</button>
+        <button class="pill pill-inactive" onclick="filterV('longform',this)">Long Form</button>
         
     </div>
 </div>
@@ -542,7 +543,7 @@
 
         <!-- 3 -->
         <div class="v-card" data-cat="educational" data-aos="fade-up" data-aos-delay="150"
-             onclick="openModal('Personal Content — Motion Graphics','social','Konten reels vertikal 9:16 dengan transisi cepat dan teks kinetis untuk engagement tinggi.','https://res.cloudinary.com/dyt5pabzw/video/upload/v1781413989/Adam_cd0bhe.mov')">
+             onclick="openModal('Personal Content — Motion Graphics','educational','Konten reels vertikal 9:16 dengan transisi cepat dan teks kinetis untuk engagement tinggi.','https://res.cloudinary.com/dyt5pabzw/video/upload/v1781413989/Adam_cd0bhe.mov')">
             <div class="thumb ratio-9-16">
                 <img src="https://res.cloudinary.com/dyt5pabzw/video/upload/v1781413989/Adam_cd0bhe.jpg" loading="lazy" alt="">
                 <div class="thumb-grad"></div>
@@ -565,8 +566,8 @@
         </div>
 
         <!-- 4 -->
-        <div class="v-card" data-cat="social" data-aos="fade-up" data-aos-delay="200"
-             onclick="openModal('TikTok Content - Content Creator Affiliate','social','Film momen pernikahan dengan pendekatan sinematik. LUT custom, slow-motion, dan scoring musik emosional.','https://res.cloudinary.com/dyt5pabzw/video/upload/v1781413985/CONTENT_1_fjix10.mp4')">
+        <div class="v-card" data-cat="shortform" data-aos="fade-up" data-aos-delay="200"
+             onclick="openModal('TikTok Content - Content Creator Affiliate','shortform','Film momen pernikahan dengan pendekatan sinematik. LUT custom, slow-motion, dan scoring musik emosional.','https://res.cloudinary.com/dyt5pabzw/video/upload/v1781413985/CONTENT_1_fjix10.mp4')">
             <div class="thumb ratio-9-16">
                 <img src="https://res.cloudinary.com/dyt5pabzw/video/upload/v1781413985/CONTENT_1_fjix10.jpg" loading="lazy" alt="">
                 <div class="thumb-grad"></div>
@@ -576,7 +577,7 @@
             </div>
             <div class="v-body">
                 <div class="v-meta">
-                    <span class="chip chip-cin">Social Media</span>
+                    <span class="chip chip-cin">Short Form</span>
                     <span class="v-year">Finished</span>
                 </div>
                 <div class="v-title">TikTok Content - Content Creator Affiliate </div>
@@ -590,8 +591,8 @@
         </div>
 
         <!-- 5 -->
-        <div class="v-card" data-cat="social" data-aos="fade-up" data-aos-delay="250"
-             onclick="openModal('Product Tools - Tools Company','social','Video produk untuk perusahaan alat dengan gaya editorial bersih, transisi smooth, dan tone warna soft peach.','https://res.cloudinary.com/dyt5pabzw/video/upload/v1779361921/snaptik_7529083384434298118_v2_rlpuis.mp4')">
+        <div class="v-card" data-cat="shortform" data-aos="fade-up" data-aos-delay="250"
+             onclick="openModal('Product Tools - Tools Company','commercial','Video produk untuk perusahaan alat dengan gaya editorial bersih, transisi smooth, dan tone warna soft peach.','https://res.cloudinary.com/dyt5pabzw/video/upload/v1779361921/snaptik_7529083384434298118_v2_rlpuis.mp4')">
             <div class="thumb ratio-9-16">
                 <img src="https://res.cloudinary.com/dyt5pabzw/video/upload/v1779361921/snaptik_7529083384434298118_v2_rlpuis.jpg" loading="lazy" alt="">
                 <div class="thumb-grad"></div>
@@ -614,8 +615,8 @@
         </div>
 
         <!-- 6 -->
-        <div class="v-card" data-cat="social" data-aos="fade-up" data-aos-delay="300"
-             onclick="openModal('TikTok Content — Tools Company','social','Serial konten TikTok mingguan untuk perusahaan alat. Beat-sync editing dengan transisi trending.','https://res.cloudinary.com/dyt5pabzw/video/upload/v1779361942/snaptik_7528692757469318407_v2_mgs0av.mp4')">
+        <div class="v-card" data-cat="shortform" data-aos="fade-up" data-aos-delay="300"
+             onclick="openModal('TikTok Content — Tools Company','shortform','Serial konten TikTok mingguan untuk perusahaan alat. Beat-sync editing dengan transisi trending.','https://res.cloudinary.com/dyt5pabzw/video/upload/v1779361942/snaptik_7528692757469318407_v2_mgs0av.mp4')">
             <div class="thumb ratio-9-16">
                 <img src="https://res.cloudinary.com/dyt5pabzw/video/upload/v1779361942/snaptik_7528692757469318407_v2_mgs0av.jpg" loading="lazy" alt="">
                 <div class="thumb-grad"></div>
@@ -625,7 +626,7 @@
             </div>
             <div class="v-body">
                 <div class="v-meta">
-                    <span class="chip chip-soc">Social Media</span>
+                    <span class="chip chip-soc">Short Form</span>
                     <span class="v-year">Finished</span>
                 </div>
                 <div class="v-title">TikTok Content — Tools Company</div>
@@ -638,6 +639,52 @@
             </div>
         </div>
 
+        <div id="empty-state" style="display:none;grid-column:1/-1;padding:56px 24px;text-align:center;border:1px dashed #cbd5e1;border-radius:24px;background:#f8fafc;">
+            <div style="font-size:14px;font-weight:800;color:#0f172a;margin-bottom:8px;">Belum ada karya Long Form</div>
+            <p style="font-size:13px;color:#64748b;line-height:1.6;">Karya video berdurasi panjang akan ditampilkan di kategori ini.</p>
+        </div>
+
+         <!-- Long Form Videos -->
+
+         <div class="v-card" data-cat="longform"
+             onclick="openModal(
+       'My YouTube Video',
+       'longform',
+       'Video dokumenter berdurasi panjang.',
+       'https://youtu.be/UEyRB1xpp6I?si=3eTL6YoKKoA98dI0'
+     )">
+    
+    <div class="thumb ratio-16-9">
+        <img src="https://img.youtube.com/vi/UEyRB1xpp6I/hqdefault.jpg"
+             loading="lazy" alt="">
+
+        <div class="thumb-grad"></div>
+        <span class="yr-badge">Finished</span>
+        <span class="dur-badge">12:45</span>
+
+        <div class="play-wrap">
+            <div class="play-circle">▶</div>
+        </div>
+    </div>
+
+    <div class="v-body">
+        <div class="v-meta">
+            <span class="chip chip-edu">Long Form</span>
+            <span class="v-year">Finished</span>
+        </div>
+
+        <div class="v-title">My YouTube Video</div>
+        <div class="v-desc">
+            Video dokumenter berdurasi panjang.
+        </div>
+
+        <div class="v-tags">
+            <span class="v-tag">Premiere Pro</span>
+            <span class="v-tag">YouTube</span>
+        </div>
+    </div>
+</div>
+        
     </div>
 </main>
 
@@ -694,9 +741,11 @@
 
     function filterV(cat, btn) {
         document.querySelectorAll('.pill').forEach(p => {
-            p.className = p.className.replace('pill-active','pill-inactive');
+            p.classList.remove('pill-active');
+            p.classList.add('pill-inactive');
         });
-        btn.className = btn.className.replace('pill-inactive','pill-active');
+        btn.classList.remove('pill-inactive');
+        btn.classList.add('pill-active');
 
         let count = 0;
         document.querySelectorAll('.v-card').forEach(card => {
@@ -707,24 +756,56 @@
             }
             if (show) count++;
         });
+
         document.getElementById('hero-count').textContent = count;
-        document.getElementById('cnt-all').textContent = count;
+        document.getElementById('cnt-all').textContent = document.querySelectorAll('.v-card').length;
+        document.getElementById('empty-state').style.display = (cat === 'longform' && count === 0) ? 'block' : 'none';
     }
 
    function openModal(title, cat, desc, videoUrl) {
     document.getElementById('m-title').textContent = title;
-    document.getElementById('m-cat').textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+
+    const categoryLabels = {
+        shortform: 'Short Form',
+        longform: 'Long Form',
+        educational: 'Motion Graphics',
+        commercial: 'Commercial'
+    };
+
+    document.getElementById('m-cat').textContent =
+        categoryLabels[cat] || cat;
+
     document.getElementById('m-desc').textContent = desc;
-    
-    // Perbaikan: Menggunakan tag video untuk menampilkan konten
+
     const modalVideo = document.querySelector('.modal-video');
-    modalVideo.innerHTML = `
-        <video controls autoplay>
-            <source src="${videoUrl}" type="video/mp4">
-            Browser Anda tidak mendukung tag video.
-        </video>
-    `;
-    
+
+    const youtubeMatch = videoUrl.match(
+        /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&?/]+)/
+    );
+
+    if (youtubeMatch) {
+        const videoId = youtubeMatch[1];
+
+        modalVideo.innerHTML = `
+            <iframe
+                src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0"
+                title="${title}"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write;
+                encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                style="width:100%;height:100%;position:absolute;
+                inset:0;">
+            </iframe>
+        `;
+    } else {
+        modalVideo.innerHTML = `
+            <video controls autoplay>
+                <source src="${videoUrl}" type="video/mp4">
+            </video>
+        `;
+    }
+
     document.getElementById('modal-bg').classList.add('open');
     document.body.style.overflow = 'hidden';
 }
